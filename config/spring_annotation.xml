@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:context="http://www.springframework.org/schema/context"
+		xmlns:aop="http://www.springframework.org/schema/aop"
+		xmlns:tx="http://www.springframework.org/schema/tx"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+        					http://www.springframework.org/schema/beans/spring-beans.xsd
+                            http://www.springframework.org/schema/context
+                            http://www.springframework.org/schema/context/spring-context.xsd
+                            http://www.springframework.org/schema/aop
+                            http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+                            http://www.springframework.org/schema/tx
+                            http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+		<aop:aspectj-autoproxy/> <!-- 打开aop解析器 如果使用基于annotation的切面一定要使用这个节点 -->
+		<!-- <context:annotation-config></context:annotation-config> -->
+		<!-- 开启Spring Annotation注解 如果只是开启这个注解那么只能使用 @Autowired @Qualifier @Value 这三个注解 而且要注册bean到Spring Context 还是得通过xml配置-->
+		<context:component-scan base-package="com.mxJ">
+			<!-- Then the specified package and all its subpackages will be scanned. You can use commas to separate multiple packages for scanning -->
+			<!-- 这里面还可以添加过滤器 参考 Spring in action 3th EN 3.2.2 -->
+		</context:component-scan>
+		<!--
+			该标签具有上面那个标签(<context:annotation-config/>)同样的功能,并且能够自动注册使用了特定Annotation的java类
+		使用了该标签那么就可以使用如下注解 @Autowired @Qualifier @Value 这三个标签是用来注入的
+		@Autowired(required=true) 默认就是这样的,required默认是true,也就是说Spring会自动检测属性是否成功注入;
+		@Autowired 注解默认是 byType 进行注入的,如果出现的多个满足的bean 则需要和
+		@Qualifier("beanId") 来精确指定注入的bean;
+
+		@Resource 默认是 byName 进行注入,如果标记在property上 则注入和属性同名的baen,当然也可以精确指定要注入bean的id
+		@Resource(name="beanId")
+
+		以下几个标签是用来声明Java类可以自动注册到Spring容器成为一个bean的
+		@Component
+		@Service
+		@Repository
+		@Controller
+		默认情况下 Spring 会对使用以上annotation的class进行标准的bean id 转换,当然我们也可以手动的精确的定义bean的名称
+		@Component("beanId")
+		-->
+		<tx:annotation-driven transaction-manager="txManager"/> <!-- 如果使用基于Spring声明式事务的时候一定要使用该标签,并且引入tx命名空间 -->
+</beans>
