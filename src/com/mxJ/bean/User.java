@@ -64,6 +64,6 @@ public class User{
 	}
 	
 	public String toString(){
-		return "I come fro//addtoStrinadddg";
+		return "I come from China.";
 	}
 }
