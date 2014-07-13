@@ -62,4 +62,8 @@ public class User{
 	public void destroy(){
 		System.out.println("User 对象被销毁了");
 	}
+	
+	public String toString(){
+		return "I come from toString";
+	}
 }
