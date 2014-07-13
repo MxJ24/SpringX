@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Component("user")@Scope("prototype")
 public class User{
-	@Value("mxJ")//注入属性值
+	@Value("mxJ")//注锟斤拷锟斤拷锟斤拷值
 	private String userName;
 	private int age;
 	private String gender;
@@ -20,9 +20,9 @@ public class User{
 	}
 	
 	@PostConstruct
-	//该方法相当于bean的 init-method 属性指定的方法 在类的构造方法执行完成之后执行
+	//锟矫凤拷锟斤拷锟洁当锟斤拷bean锟斤拷 init-method 锟斤拷锟斤拷指锟斤拷锟侥凤拷锟斤拷 锟斤拷锟斤拷锟侥癸拷锟届方锟斤拷执锟斤拷锟斤拷锟斤拷之锟斤拷执锟斤拷
 	public void postInit(){
-		System.out.println("User 对象已经被实例化了");
+		System.out.println("User 锟斤拷锟斤拷锟窖撅拷锟斤拷实锟斤拷锟斤拷锟斤拷");
 	}
 	
 	public String getUserName() {
@@ -58,12 +58,12 @@ public class User{
 	}
 	
 	@PreDestroy
-	//该方法是在User对象的实例被销毁之前执行
+	//锟矫凤拷锟斤拷锟斤拷锟斤拷User锟斤拷锟斤拷锟斤拷实锟斤拷锟斤拷锟斤拷锟斤拷之前执锟斤拷
 	public void destroy(){
-		System.out.println("User 对象被销毁了");
+		System.out.println("User 锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷");
 	}
 	
 	public String toString(){
-		return "I come from toString";
+		return "I come fro//addtoStrinadddg";
 	}
 }
