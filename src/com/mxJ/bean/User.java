@@ -64,7 +64,7 @@ public class User{
 	}
 	
 	public String toString(){
-		return "I come from ChinaTown";
+		return "I";
 		//Commit by luowl
 		//Second Commit;
 	}
