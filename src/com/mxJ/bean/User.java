@@ -52,15 +52,17 @@ public class User{
 	}
 
 	public void setEmail(String email) {
-		this.email = email;
+		
 	}
 	
 	@PreDestroy	
 	public void destroy(){
 		System.out.println("User");
+		//commit I
 	}
 	
 	public String toString(){
 		return "I come from ChinaTown";
+		//commit II
 	}
 }
