@@ -1,4 +1,4 @@
-
+package org.talend.com;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
