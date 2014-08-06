@@ -11,43 +11,43 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
 /*
- * @desc È¨ÏŞÀ¹½ØÇĞÃæ
+ * @desc æƒé™æ‹¦æˆªåˆ‡é¢
  */
 @Aspect
-//½«¸ÃÀàÉùÃ÷ÎªÒ»¸öÇĞÃæ
+//å°†è¯¥ç±»å£°æ˜ä¸ºä¸€ä¸ªåˆ‡é¢
 @Component
-//½«¸ÃÀàÉùÃ÷ÎªÒ»¸ö×é¼ş ÕâÁ½¸ö×¢½â±ØĞëÒ»Æğ³öÏÖ
+//å°†è¯¥ç±»å£°æ˜ä¸ºä¸€ä¸ªç»„ä»¶ è¿™ä¸¤ä¸ªæ³¨è§£å¿…é¡»ä¸€èµ·å‡ºç°
 public class PermissionIntercept{
-	@Pointcut("execution(* com.mxJ.service.UserService.addUser(com.mxJ.bean.User))")//ÉùÃ÷Ò»¸öÇĞÈëµã Ò»¸öÇĞÈëµã±ØĞëÒÀ¸½ÔÚÒ»¸ö¿Õ·½·¨ÉÏ
-	public void unnamed(){//Õâ¸ö·½·¨µÄÃû×Ö¾ÍÊÇ¸ÃÇĞÈëµãµÄÃû×Ö µ±Ç°ÇĞÈëµãµÄÃû×ÖÊÇ unnamed()
+	@Pointcut("execution(* com.mxJ.service.UserService.addUser(com.mxJ.bean.User))")//å£°æ˜ä¸€ä¸ªåˆ‡å…¥ç‚¹ ä¸€ä¸ªåˆ‡å…¥ç‚¹å¿…é¡»ä¾é™„åœ¨ä¸€ä¸ªç©ºæ–¹æ³•ä¸Š
+	public void unnamed(){//è¿™ä¸ªæ–¹æ³•çš„åå­—å°±æ˜¯è¯¥åˆ‡å…¥ç‚¹çš„åå­— å½“å‰åˆ‡å…¥ç‚¹çš„åå­—æ˜¯ unnamed()
 		
 	}
 	
-	 @Before("unnamed() && args(user)") //Ç°ÖÃÍ¨Öª ÒıÓÃÇĞÈëµã unnamed(),²¢ÇÒÀ¹½ØµÄ·½·¨µÄ²ÎÊı±ØĞëÊÇUserÀà;
+	 @Before("unnamed() && args(user)") //å‰ç½®é€šçŸ¥ å¼•ç”¨åˆ‡å…¥ç‚¹ unnamed(),å¹¶ä¸”æ‹¦æˆªçš„æ–¹æ³•çš„å‚æ•°å¿…é¡»æ˜¯Userç±»;
 	 public void doAccessCheck(User user){
 			System.out.println("doAccessCheck Method!!!");
 	 }
 	 
-	 @AfterReturning(pointcut="unnamed()",returning="str")//ºóÖÃÍ¨Öª,²¢ÇÒÄÃµ½Ó¦ÓÃºóÖÃÍ¨Öª·½·¨·µ»ØµÄÖµ
+	 @AfterReturning(pointcut="unnamed()",returning="str")//åç½®é€šçŸ¥,å¹¶ä¸”æ‹¿åˆ°åº”ç”¨åç½®é€šçŸ¥æ–¹æ³•è¿”å›çš„å€¼
 	 public void after(String str){
 	    	System.out.println("After Returning Method !!!");
 	 }
 	 
-	 @After("unnamed()")//×îÖÕÍ¨Öª
+	 @After("unnamed()")//æœ€ç»ˆé€šçŸ¥
 	 public void reAfter(){
-	    	System.out.println("×îÖÕÍ¨Öª");
+	    	System.out.println("æœ€ç»ˆé€šçŸ¥");
 	 }
 	 
-	 @AfterThrowing(pointcut="unnamed()",throwing="exc")//ÀıÍâÍ¨Öª,²¢½«À¹½Øµ½µÄException×÷Îª²ÎÊı´«µİ¸ø exception0 ·½·¨×÷Îª²ÎÊı
+	 @AfterThrowing(pointcut="unnamed()",throwing="exc")//ä¾‹å¤–é€šçŸ¥,å¹¶å°†æ‹¦æˆªåˆ°çš„Exceptionä½œä¸ºå‚æ•°ä¼ é€’ç»™ exception0 æ–¹æ³•ä½œä¸ºå‚æ•°
 	 public void exception0(Exception exc){
-	    	System.out.println("ÎÒÊÇÀıÍâÍ¨Öª");
+	    	System.out.println("æˆ‘æ˜¯ä¾‹å¤–é€šçŸ¥");
 	 }
 	 
 	 @Around("unnamed()")
 	 public Object methodName(ProceedingJoinPoint pjp) throws Throwable{
 	    	System.out.println("Around In!!!");
 	        Object result=pjp.proceed();
-	        System.out.println("Around Out!!!");
+	        System.out.print++++++ln("Around Out!!!");
 	      return result;
 	}
 }
