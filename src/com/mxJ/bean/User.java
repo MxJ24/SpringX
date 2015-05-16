@@ -9,20 +9,20 @@ import org.springframework.stereotype.Component;
 
 
 public class User{
-	@Value("mxJ")
+	      @Value("mxJ")
 	private String userName;
 	private int age;
-	private String gender;
-	private String email;     
+	     private String gender;
+	    private String email;
 	public User(){
-		
+
 	}
-	
-	@PostConstruct	
+
+	@PostConstruct
 	public void postInit(){
 		System.out.println("User");
 	}
-	
+
 	public String getUserName() {
 		return userName;
 	}
@@ -54,12 +54,12 @@ public class User{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	@PreDestroy	
+
+	@PreDestroy
 	public void destroy(){
 		System.out.println("User");
 	}
-	
+
 	public String toString(){
 		return "I come from ChinaTown";
 	}
